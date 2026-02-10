@@ -39,7 +39,7 @@ Vector2i Label::preferred_size(NVGcontext *ctx) const {
     nvgFontSize(ctx, font_size());
     if (m_fixed_size.x() > 0) {
         float bounds[4];
-        nvgTextAlign(ctx, NVG_ALIGN_LEFT | NVG_ALIGN_TOP);
+        nvgTextAlign(ctx, NVG_ALIGN_CENTER | NVG_ALIGN_TOP);
         nvgTextBoxBounds(ctx, m_pos.x(), m_pos.y(), m_fixed_size.x(), m_caption.c_str(), nullptr, bounds);
         return Vector2i(m_fixed_size.x(), bounds[3] - bounds[1]);
     } else {
@@ -57,7 +57,7 @@ void Label::draw(NVGcontext *ctx) {
     nvgFontSize(ctx, font_size());
     nvgFillColor(ctx, m_color);
     if (m_fixed_size.x() > 0) {
-        nvgTextAlign(ctx, NVG_ALIGN_LEFT | NVG_ALIGN_TOP);
+        nvgTextAlign(ctx, NVG_ALIGN_CENTER | NVG_ALIGN_TOP);
         nvgTextBox(ctx, m_pos.x(), m_pos.y(), m_fixed_size.x(), m_caption.c_str(), nullptr);
     } else {
         nvgTextAlign(ctx, NVG_ALIGN_LEFT | NVG_ALIGN_MIDDLE);
